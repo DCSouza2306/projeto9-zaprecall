@@ -5,7 +5,7 @@ import ARRAYCARDS from "./ARRAYCARDS";
 
 
 
-export default function ListaCards() {
+export default function ListaCards({setContador,contador, botaoLista, setBotaoLista}) {
 
     function imprimirCards() {
         const cardsEscolhidos = [];
@@ -29,6 +29,10 @@ export default function ListaCards() {
                 pergunta={c.Q} 
                 indice={i} 
                 resposta={c.R}
+                contador={contador}
+                setContador={setContador}
+                botaoLista={botaoLista}
+                setBotaoLista={setBotaoLista}
                 />)}
             </ul>
         )

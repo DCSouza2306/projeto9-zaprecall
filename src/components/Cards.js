@@ -1,12 +1,27 @@
 import styled from "styled-components"
 import seta from "../assets/img/seta_play.png"
 import setaVirar from "../assets/img/seta_virar.png"
-import { useState } from "react"
+import imagensCheck from "./ImagensCheck"
 
-export default function Cards({ pergunta, resposta, indice }) {
+
+import { useState } from "react"
+import ListaBotoes from "./ListaBotoes";
+
+export default function Cards(
+    {
+        pergunta,
+        resposta,
+        indice,
+        setContador,
+        contador,
+        botaoLista,
+        setBotaoLista
+    }) {
 
     const [virarPergunta, setVirarPergunta] = useState(false);
     const [virarResposta, setVirarResposta] = useState(false);
+    const [cardRespondido, setCardRespondido] = useState(false);
+    const [botao, setBotao] = useState("");
 
     return (
         <>
@@ -30,10 +45,32 @@ export default function Cards({ pergunta, resposta, indice }) {
             )}
 
             {virarResposta && (
-                <CardMaior>
+                <CardMaior desabilita={cardRespondido ? "none" : ""}>
                     <p>{resposta}</p>
+                    <ListaBotoes
+                        indice={indice}
+                        setContador={setContador}
+                        setBotao={setBotao}
+                        contador={contador}
+                        setCardRespondido={setCardRespondido}
+                        botaoLista={botaoLista}
+                        setBotaoLista={setBotaoLista}
+                    />
                 </CardMaior>
             )}
+
+            {cardRespondido && (
+                <CardRespondido cor={imagensCheck[botao].cor}>
+                    <p>Pergunta {indice + 1}</p>
+                    <img
+                        className="icone-seta"
+                        src={imagensCheck[botao].tipo}
+                        alt="icone de check"
+
+                    />
+                </CardRespondido>
+            )}
+
         </>
     )
 }
@@ -63,11 +100,18 @@ display: ${props => props.desabilita};
     cursor: pointer;
 }
 `
+const CardRespondido = styled(Card)`
+    p{
+        text-decoration-line: line-through;
+        color: ${props => props.cor}
+    }
+`
 
 const CardMaior = styled(Card)`
 height:131px;
 background-color:#FFFFD4;
-align-items: flex-start;
+flex-direction: column;
+align-items: space-between;
 padding-top: 15px;
 position: relative;
 
@@ -77,3 +121,4 @@ img{
     right: 20px;
 }
 `
+

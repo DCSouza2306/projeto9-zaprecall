@@ -1,8 +1,11 @@
 import styled from "styled-components";
 import Botoes from "./Botoes";
 import ListaCards from "./ListaCards";
+import { useState } from "react"
 
 export default function ZapMain(){
+ 
+
     return(
         <ContainerPrincipal>
             <ListaCards />

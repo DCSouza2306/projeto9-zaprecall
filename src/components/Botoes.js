@@ -11,7 +11,7 @@ export default function Botoes(){
                 <Botao cor="#FF922E">
                     Quase não lembrei!
                 </Botao> 
-                
+    
                 <Botao cor="#2FBE34">
                     Zap!
                 </Botao> 

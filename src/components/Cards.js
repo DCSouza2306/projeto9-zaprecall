@@ -27,23 +27,27 @@ export default function Cards(
         <>
             <Card data-identifier="flashcard" desabilita={virarPergunta ? "none" : ""}>
                 <p>Pergunta {indice + 1}</p>
-                <img
-                    data-identifier="flashcard-show-btn"
-                    className="icone"
-                    src={seta} alt="icone seta"
-                    onClick={() => setVirarPergunta(true)}
-                />
+                <button  className="botao-card" data-identifier="flashcard-show-btn">
+                    <img
+                        className="icone"
+                        src={seta} alt="icone seta"
+                        onClick={() => setVirarPergunta(true)}
+                    />
+                </button>
+
             </Card>
 
             {virarPergunta && (
                 <CardMaior desabilita={virarResposta ? "none" : ""}>
                     <p data-identifier="flashcard-question" >{pergunta}</p>
-                    <img
-                        data-identifier="flashcard-turn-btn"
-                        className="icone"
-                        src={setaVirar} alt="Icone seta de virar"
-                        onClick={() => setVirarResposta(true)}
-                    />
+                    <button className="botao-card" data-identifier="flashcard-turn-btn">
+                        <img
+                            className="icone"
+                            src={setaVirar} alt="Icone seta de virar"
+                            onClick={() => setVirarResposta(true)}
+                        />
+                    </button>
+
                 </CardMaior>
             )}
 
@@ -100,7 +104,14 @@ display: ${props => props.desabilita};
     height: 23px;
 }
 
-.icone:hover{
+.botao-card{
+    width: 33px;
+    height: 33px;
+    border: none;
+    background-color: white;
+}
+
+.botao-card:hover{
     cursor: pointer;
 }
 `
@@ -119,10 +130,12 @@ align-items: space-between;
 padding-top: 15px;
 position: relative;
 
-img{
+
+.botao-card{
     position:absolute;
     bottom: 20px;
     right: 20px;
+    background-color:#FFFFD4;
 }
 `
 

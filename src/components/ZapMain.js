@@ -3,13 +3,13 @@ import imagensCheck from "./ImagensCheck";
 import ListaCards from "./ListaCards";
 import { useState } from "react"
 
-export default function ZapMain() {
+export default function ZapMain({habilitaRecall}) {
 
     const [botaoLista, setBotaoLista] = useState([3,3,3,3,3,3,3,3]);
     const [contador, setContador] = useState(0)
 
     return (
-        <ContainerPrincipal>
+        <ContainerPrincipal habilitaRecall={habilitaRecall} >
             <ListaCards
                 contador={contador}
                 setContador={setContador}
@@ -36,6 +36,7 @@ const ContainerPrincipal = styled.div`
     width: 375px;
     background-color: #FB6B6B;
     position: absolute;
+    display: ${props => props.habilitaRecall?"":"none"};
 
 `
 

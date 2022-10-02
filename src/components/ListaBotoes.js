@@ -3,16 +3,16 @@ import styled from "styled-components"
 export default function ListaBotoes(
     {
         setBotao,
-        setContador, 
+        setContador,
         contador,
         setCardRespondido,
         setBotaoLista,
         botaoLista,
         indice
-       
-    }){
 
-    function selecionarBotao(botao){
+    }) {
+
+    function selecionarBotao(botao) {
         setBotao(botao);
         botaoLista[indice] = botao
         setBotaoLista([...botaoLista]);
@@ -20,21 +20,33 @@ export default function ListaBotoes(
         setCardRespondido(true);
     }
 
-    return(
-            <Lista >
-                <Botao cor="#FF3030" disabled={contador===4} onClick={()=>selecionarBotao(0)}>
-                    Não lembrei!
-                </Botao> 
-                
-                <Botao cor="#FF922E" onClick={()=>selecionarBotao(1)}>
-                    Quase não lembrei!
-                </Botao> 
-    
-                <Botao cor="#2FBE34" onClick={()=>selecionarBotao(2)}>
-                    Zap!
-                </Botao> 
+    return (
+        <Lista >
+            <Botao
+                data-identifier="forgot-btn"
+                cor="#FF3030"
+                onClick={() => selecionarBotao(0)}
+            >
+                Não lembrei!
+            </Botao>
 
-            </Lista>
+            <Botao
+                data-identifier="almost-forgot-btn"
+                cor="#FF922E"
+                onClick={() => selecionarBotao(1)}
+            >
+                Quase não lembrei!
+            </Botao>
+
+            <Botao
+                data-identifier="zap-btn"
+                cor="#2FBE34"
+                onClick={() => selecionarBotao(2)}
+            >
+                Zap!
+            </Botao>
+
+        </Lista>
 
     )
 }

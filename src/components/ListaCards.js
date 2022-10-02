@@ -7,23 +7,14 @@ import ARRAYCARDS from "./ARRAYCARDS";
 
 export default function ListaCards({setContador,contador, botaoLista, setBotaoLista}) {
 
-    function imprimirCards() {
-        const cardsEscolhidos = [];
-        const indicesEscolhidos = [];
-        let indice;
-
-        while (cardsEscolhidos.length < 4) {
-            indice = Math.floor(Math.random() * ARRAYCARDS.length);
-
-            if(!indicesEscolhidos.includes(indice)){
-                indicesEscolhidos.push(indice);
-                cardsEscolhidos.push(ARRAYCARDS[indice]);
-            }
-        }
-
-        return (
+    return (
+        <ContainerLista>
+            <div className="titulo">
+                <img src={logo} alt="logo ZapRecall" />
+                <h1>ZapRecall</h1>
+            </div>
             <ul>
-                {cardsEscolhidos.map((c, i) => 
+                {ARRAYCARDS.map((c, i) => 
                 <Cards 
                 key={i} 
                 pergunta={c.Q} 
@@ -35,26 +26,15 @@ export default function ListaCards({setContador,contador, botaoLista, setBotaoLi
                 setBotaoLista={setBotaoLista}
                 />)}
             </ul>
-        )
-
-    }
-
-    return (
-        <ContainerLista>
-            <div className="titulo">
-                <img src={logo} alt="logo ZapRecall" />
-                <h1>ZapRecall</h1>
-            </div>
-            {imprimirCards()}
         </ContainerLista>
     )
 }
 
 const ContainerLista = styled.div`
-    height: 564px;
     width: 300px;
-    margin: 0 auto;
-    margin-top: 30px;
+    margin: 20px auto;
+    position: relative;
+   
 
     .titulo{
         display: flex;

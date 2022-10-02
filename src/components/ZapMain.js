@@ -5,7 +5,7 @@ import { useState } from "react"
 
 export default function ZapMain() {
 
-    const [botaoLista, setBotaoLista] = useState([3, 3, 3, 3]);
+    const [botaoLista, setBotaoLista] = useState([3,3,3,3,3,3,3,3]);
     const [contador, setContador] = useState(0)
 
     return (
@@ -17,7 +17,12 @@ export default function ZapMain() {
                 setBotaoLista={setBotaoLista}
             />
             <ContainerConcluidos>
-                <p className="qtd-concluidos">{contador}/4 CONCLUÍDOS</p>
+                <p
+                    data-identifier="flashcard-counter"
+                    className="qtd-concluidos"
+                >
+                    {contador}/8 CONCLUÍDOS
+                </p>
                 <div className="lista-icones">
                     {botaoLista.map((b) => <img src={imagensCheck[b].tipo} alt={""} />)}
                 </div>
@@ -29,9 +34,9 @@ export default function ZapMain() {
 
 const ContainerPrincipal = styled.div`
     width: 375px;
-    height: 667px;
     background-color: #FB6B6B;
-    position: fixed;
+    position: absolute;
+
 `
 
 const ContainerConcluidos = styled.div`
@@ -54,6 +59,7 @@ const ContainerConcluidos = styled.div`
 
     .lista-icones{
         display: flex;
+        margin-top:10px;
     }
 
     img{

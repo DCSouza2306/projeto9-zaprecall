@@ -25,10 +25,11 @@ export default function Cards(
 
     return (
         <>
-            <Card desabilita={virarPergunta ? "none" : ""}>
+            <Card data-identifier="flashcard" desabilita={virarPergunta ? "none" : ""}>
                 <p>Pergunta {indice + 1}</p>
                 <img
-                    className="icone-seta"
+                    data-identifier="flashcard-show-btn"
+                    className="icone"
                     src={seta} alt="icone seta"
                     onClick={() => setVirarPergunta(true)}
                 />
@@ -36,17 +37,19 @@ export default function Cards(
 
             {virarPergunta && (
                 <CardMaior desabilita={virarResposta ? "none" : ""}>
-                    <p>{pergunta}</p>
+                    <p data-identifier="flashcard-question" >{pergunta}</p>
                     <img
+                        data-identifier="flashcard-turn-btn"
+                        className="icone"
+                        src={setaVirar} alt="Icone seta de virar"
                         onClick={() => setVirarResposta(true)}
-                        className="icone-seta"
-                        src={setaVirar} alt="Icone seta de virar" />
+                    />
                 </CardMaior>
             )}
 
             {virarResposta && (
                 <CardMaior desabilita={cardRespondido ? "none" : ""}>
-                    <p>{resposta}</p>
+                    <p data-identifier="flashcard-answer" >{resposta}</p>
                     <ListaBotoes
                         indice={indice}
                         setContador={setContador}
@@ -63,7 +66,8 @@ export default function Cards(
                 <CardRespondido cor={imagensCheck[botao].cor}>
                     <p>Pergunta {indice + 1}</p>
                     <img
-                        className="icone-seta"
+                        data-identifier="flashcard-status"
+                        className="icone"
                         src={imagensCheck[botao].tipo}
                         alt="icone de check"
 
@@ -91,12 +95,12 @@ border-radius: 5px;
 box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.15);
 display: ${props => props.desabilita};
 
-.icone-seta{
+.icone{
     width: 20px;
     height: 23px;
 }
 
-.icone-seta:hover{
+.icone:hover{
     cursor: pointer;
 }
 `

@@ -7,7 +7,7 @@ const imagensCheck = [
     { tipo: erro, cor: "#FF3030" },
     { tipo: quase, cor: "#FF922E" },
     { tipo: certo, cor: "#2FBE34" },
-    { tipo: "", cor: "#2FBE34" },
+    { tipo: "", cor: "#2FB" },
 
 
     
